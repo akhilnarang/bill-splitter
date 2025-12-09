@@ -1,6 +1,10 @@
 from fastapi import APIRouter
 
 from app.schemas.outing import Outing, OutingSplit, Payment, PaymentPlan
+from app.services.outing import (
+    calculate_balance,
+    calculate_outing_split_with_minimal_transactions,
+)
 
 router = APIRouter()
 
@@ -26,4 +30,8 @@ async def split(outing: Outing) -> OutingSplit:
         ]
     )
 
-    return split
+    balance = calculate_balance(outing)
+    print(balance)
+    outing_split = calculate_outing_split_with_minimal_transactions(balance)
+
+    return outing_split

@@ -166,3 +166,6 @@ cython_debug/
 
 # Zed
 .zed/
+
+# Images for testing
+*.jpg

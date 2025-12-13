@@ -1,5 +1,5 @@
-from app.schemas.outing import Bill, Item, Outing
-from app.services.outing import (
+from app.schemas.bill import Bill, Item, Outing
+from app.services.bill import (
     OutingPaymentBalance,
     PersonBalance,
     calculate_balance,

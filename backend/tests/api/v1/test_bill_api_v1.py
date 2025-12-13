@@ -36,7 +36,7 @@ def test_split__simple_bill_split_with_tax_and_service_charge():
         ]
     }
 
-    response = test_client.post("/api/v1/outings/split", json=outing_data)
+    response = test_client.post("/api/v1/bills/split", json=outing_data)
     assert response.status_code == 200
 
     outing_split = response.json()
@@ -98,7 +98,7 @@ def test_split__multiple_bills_with_different_service_charges_and_no_tax():
         ]
     }
 
-    response = test_client.post("/api/v1/outings/split", json=outing_data)
+    response = test_client.post("/api/v1/bills/split", json=outing_data)
     assert response.status_code == 200
 
     outing_split = response.json()
@@ -125,7 +125,7 @@ def test_split__multiple_bills_with_different_service_charges_and_no_tax():
 def test_split__outing_with_empty_bills_list():
     outing_data = {"bills": []}
 
-    response = test_client.post("/api/v1/outings/split", json=outing_data)
+    response = test_client.post("/api/v1/bills/split", json=outing_data)
     assert response.status_code == 422
 
     error_response = response.json()
@@ -155,7 +155,7 @@ def test_split__bill_with_empty_items_list():
         ]
     }
 
-    response = test_client.post("/api/v1/outings/split", json=outing_data)
+    response = test_client.post("/api/v1/bills/split", json=outing_data)
     assert response.status_code == 422
 
     error_response = response.json()
@@ -192,7 +192,7 @@ def test_split__item_with_empty_name():
         ]
     }
 
-    response = test_client.post("/api/v1/outings/split", json=outing_data)
+    response = test_client.post("/api/v1/bills/split", json=outing_data)
     assert response.status_code == 422
 
     error_response = response.json()
@@ -227,7 +227,7 @@ def test_split__item_with_zero_price():
         ]
     }
 
-    response = test_client.post("/api/v1/outings/split", json=outing_data)
+    response = test_client.post("/api/v1/bills/split", json=outing_data)
     assert response.status_code == 422
 
     error_response = response.json()
@@ -262,7 +262,7 @@ def test_split__item_with_negative_price():
         ]
     }
 
-    response = test_client.post("/api/v1/outings/split", json=outing_data)
+    response = test_client.post("/api/v1/bills/split", json=outing_data)
     assert response.status_code == 422
 
     error_response = response.json()
@@ -297,7 +297,7 @@ def test_split__item_with_zero_quantity():
         ]
     }
 
-    response = test_client.post("/api/v1/outings/split", json=outing_data)
+    response = test_client.post("/api/v1/bills/split", json=outing_data)
     assert response.status_code == 422
 
     error_response = response.json()
@@ -332,7 +332,7 @@ def test_split__item_with_negative_quantity():
         ]
     }
 
-    response = test_client.post("/api/v1/outings/split", json=outing_data)
+    response = test_client.post("/api/v1/bills/split", json=outing_data)
     assert response.status_code == 422
 
     error_response = response.json()
@@ -367,7 +367,7 @@ def test_split__item_with_empty_consumed_by():
         ]
     }
 
-    response = test_client.post("/api/v1/outings/split", json=outing_data)
+    response = test_client.post("/api/v1/bills/split", json=outing_data)
     assert response.status_code == 422
 
     error_response = response.json()
@@ -404,7 +404,7 @@ def test_split__bill_with_empty_paid_by():
         ]
     }
 
-    response = test_client.post("/api/v1/outings/split", json=outing_data)
+    response = test_client.post("/api/v1/bills/split", json=outing_data)
     assert response.status_code == 422
 
     error_response = response.json()
@@ -439,7 +439,7 @@ def test_split__bill_with_negative_tax_rate():
         ]
     }
 
-    response = test_client.post("/api/v1/outings/split", json=outing_data)
+    response = test_client.post("/api/v1/bills/split", json=outing_data)
     assert response.status_code == 422
 
     error_response = response.json()
@@ -474,7 +474,7 @@ def test_split__bill_with_tax_rate_greater_than_one():
         ]
     }
 
-    response = test_client.post("/api/v1/outings/split", json=outing_data)
+    response = test_client.post("/api/v1/bills/split", json=outing_data)
     assert response.status_code == 422
 
     error_response = response.json()
@@ -509,7 +509,7 @@ def test_split__bill_with_negative_service_charge():
         ]
     }
 
-    response = test_client.post("/api/v1/outings/split", json=outing_data)
+    response = test_client.post("/api/v1/bills/split", json=outing_data)
     assert response.status_code == 422
 
     error_response = response.json()
@@ -544,7 +544,7 @@ def test_split__bill_with_service_charge_greater_than_one():
         ]
     }
 
-    response = test_client.post("/api/v1/outings/split", json=outing_data)
+    response = test_client.post("/api/v1/bills/split", json=outing_data)
     assert response.status_code == 422
 
     error_response = response.json()
@@ -563,7 +563,7 @@ def test_split__bill_with_service_charge_greater_than_one():
 def test_split__missing_required_field_bills():
     outing_data = {}
 
-    response = test_client.post("/api/v1/outings/split", json=outing_data)
+    response = test_client.post("/api/v1/bills/split", json=outing_data)
     assert response.status_code == 422
 
     error_response = response.json()
@@ -596,7 +596,7 @@ def test_split__missing_required_field_paid_by():
         ]
     }
 
-    response = test_client.post("/api/v1/outings/split", json=outing_data)
+    response = test_client.post("/api/v1/bills/split", json=outing_data)
     assert response.status_code == 422
 
     error_response = response.json()
@@ -621,7 +621,7 @@ def test_split__missing_required_field_items():
         ]
     }
 
-    response = test_client.post("/api/v1/outings/split", json=outing_data)
+    response = test_client.post("/api/v1/bills/split", json=outing_data)
     assert response.status_code == 422
 
     error_response = response.json()
@@ -653,7 +653,7 @@ def test_split__missing_required_field_name():
         ]
     }
 
-    response = test_client.post("/api/v1/outings/split", json=outing_data)
+    response = test_client.post("/api/v1/bills/split", json=outing_data)
     assert response.status_code == 422
 
     error_response = response.json()
@@ -685,7 +685,7 @@ def test_split__missing_required_field_price():
         ]
     }
 
-    response = test_client.post("/api/v1/outings/split", json=outing_data)
+    response = test_client.post("/api/v1/bills/split", json=outing_data)
     assert response.status_code == 422
 
     error_response = response.json()
@@ -717,7 +717,7 @@ def test_split__missing_required_field_quantity():
         ]
     }
 
-    response = test_client.post("/api/v1/outings/split", json=outing_data)
+    response = test_client.post("/api/v1/bills/split", json=outing_data)
     assert response.status_code == 422
 
     error_response = response.json()
@@ -749,7 +749,7 @@ def test_split__missing_required_field_consumed_by():
         ]
     }
 
-    response = test_client.post("/api/v1/outings/split", json=outing_data)
+    response = test_client.post("/api/v1/bills/split", json=outing_data)
     assert response.status_code == 422
 
     error_response = response.json()

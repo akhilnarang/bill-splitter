@@ -42,6 +42,9 @@ const ItemForm = ({ item, index, onItemChange, onDelete, canDelete, onConsumerKe
         </div>
 
         <div>
+          <label className="block text-xs text-gray-700 dark:text-gray-400 mb-2 font-mono tracking-wider">
+            CONSUMED BY
+          </label>
           <div className="flex flex-wrap gap-2 mb-2">
             {item.consumed_by.map((consumer, cIndex) => (
               <span
@@ -61,7 +64,7 @@ const ItemForm = ({ item, index, onItemChange, onDelete, canDelete, onConsumerKe
           <input
             type="text"
             onKeyDown={(e) => onConsumerKeyDown(index, e)}
-            placeholder="type names of people who consumed this, and press enter"
+            placeholder="add name, press enter"
             className="w-full px-0 py-2 bg-transparent border-b-2 border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-500 focus:outline-none focus:border-gray-900 dark:focus:border-gray-300 transition-colors"
           />
         </div>

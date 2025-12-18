@@ -10,4 +10,3 @@ class Settings(BaseSettings):
 
 
 settings = Settings()  # type: ignore
-print(settings.GEMINI_API_KEY, settings.CORS_ALLOW_HOSTS)

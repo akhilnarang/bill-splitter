@@ -1,4 +1,4 @@
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, field_validator
 
 
 class OCRBillItem(BaseModel):
@@ -19,12 +19,22 @@ class Item(BaseModel):
     quantity: int = Field(gt=0)
     consumed_by: list[str] = Field(min_length=1)
 
+    @field_validator("consumed_by", mode="after")
+    @classmethod
+    def to_lower(cls, value):
+        return [v.lower() for v in value]
+
 
 class Bill(BaseModel):
     items: list[Item] = Field(min_length=1)
     paid_by: str = Field(min_length=1)
     tax_rate: float = Field(default=0.05, ge=0.0, le=1.0)
     service_charge: float = Field(default=0.0, ge=0.0, le=1.0)
+
+    @field_validator("paid_by", mode="after")
+    @classmethod
+    def to_lower(cls, value):
+        return value.lower()
 
 
 class Outing(BaseModel):

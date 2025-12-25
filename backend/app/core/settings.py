@@ -2,7 +2,7 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
 class Settings(BaseSettings):
-    CORS_ALLOW_HOSTS: list[str] = []
+    CORS_ALLOW_HOSTS: list[str] = ["*"]
 
     GEMINI_API_KEY: str | None = None
 
